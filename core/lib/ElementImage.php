@@ -1,9 +1,12 @@
 <?php
 
-class StepPage extends Step
+class ElementImage extends StepElement
 {
-	protected function init() {}
-	
+	protected function init() 
+	{
+		
+	}
+
 	public function validate(&$data) 
 	{
 		return true;
@@ -11,6 +14,7 @@ class StepPage extends Step
 
 	protected function prepareRender()
 	{
-		// nothing to do
+		
 	}
 }
+

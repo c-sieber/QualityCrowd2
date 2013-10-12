@@ -57,7 +57,7 @@ class Main extends Base
 		if (!$this->refreshStep) $stepId++;
 
 		while(true) {
-			$step = $this->batch->getStepObject($stepId, $this->workerId, $stepId);
+			$step = $this->batch->getStepObject($stepId, $this->workerId);
 			if ($step->skip()) {
 				$stepId++;
 			} else {
@@ -112,7 +112,6 @@ class Main extends Base
 			settype($stepId, 'int');
 
 			$data = $_POST;
-			unset($data['batchId']);
 			unset($data['stepId-' . $this->scope]);
 
 			if ($stepId <> $this->lastStepId) {
@@ -120,7 +119,7 @@ class Main extends Base
 				$this->refreshStep = true;
 			} else {
 				// validate answer data
-				$step = $this->batch->getStepObject($stepId, $this->workerId, $stepId);
+				$step = $this->batch->getStepObject($stepId, $this->workerId);
 				$msg = $step->validate($data);
 
 				// save answer data if valid

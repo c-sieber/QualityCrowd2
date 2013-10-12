@@ -1,6 +1,6 @@
 <?php
 
-$securitySalt = 'QualityCrowd2-7078e430';
+$securitySalt = 'christian_test';
 
 return array(
 

@@ -313,23 +313,7 @@ class Batch extends Base
 	{
 		$step = $this->steps[$stepId];
 
-		if (!isset($step['command']))
-		{
-			throw new Exception('internal error');
-		}
-
-		switch($step['command'])
-		{
-			case 'video':
-			case 'image':
-			case 'question':
-			$stepObject = new StepQuestion($step, $this->batchId, $workerId, $stepId);
-			break;
-
-			default:
-			$class = 'Step' . ucfirst($step['command']);
-			$stepObject = new $class($step, $this->batchId, $workerId, $stepId);
-		}
+		$stepObject = new Step($step, $this, $workerId, $stepId);
 
 		return $stepObject;
 	}
